@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+    
+    let currentMax = nums[0];
+   
+    let currentMin = nums[0];
+    
+    let finalMax = nums[0];
+
+  for(let i = 1; i < nums.length; i++){
+    let temp = currentMax
+   
+    currentMax = Math.max(Math.max(currentMax * nums[i], currentMin*nums[i]), nums[i])
+     
+   //if currentMax comes out to be negative hence calculating by using temp
+    currentMin = Math.min(Math.min(temp * nums[i], currentMin*nums[i]), nums[i])
+   
+    finalMax = Math.max(currentMax, finalMax);
+  }
+
+  return finalMax;
+};
