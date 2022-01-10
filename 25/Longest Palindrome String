@@ -1,0 +1,36 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    if (s.length < 1 || s === null) return '';
+
+    let longest = '';
+
+    for (let i = 0; i < s.length; i++) {
+        let OddPalindrome = startFromCentre(s, i, i);
+        let EvenPalindrome = startFromCentre(s, i - 1, i);
+
+        if (OddPalindrome.length > longest.length) {
+            longest = OddPalindrome;
+        }
+
+        if (EvenPalindrome.length > longest.length) {
+            longest = EvenPalindrome;
+        }
+
+        
+    }
+    return longest;
+};
+
+
+function startFromCentre(str, left, right) {
+    let i = 0;
+    while (str[left - i] && str[left - i] === str[right + i]) {
+        i++;
+    }
+    i--;
+
+    return str.slice(left - i, right + i + 1);
+}
