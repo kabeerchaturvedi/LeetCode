@@ -1,0 +1,2 @@
+s = s.replace(/[^a-z0-9]/gi, '').toLowerCase()
+    return s.split('').reverse().join('') === s
